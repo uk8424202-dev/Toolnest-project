@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "ToolNest"
+description = "A responsive collection of free everyday browser tools, including text utilities, calculators, timers, QR generation, and local password generation."
+version = "1.0.0"
+id = "artifacts/toolnest"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21068
+
+[services.development]
+run = "pnpm --filter @workspace/toolnest run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/toolnest", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/toolnest/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21068"
+BASE_PATH = "/"

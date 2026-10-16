@@ -1,0 +1,52 @@
+Continue working on my existing ToolNest project. Do not create a new project or delete working code.
+
+My goal is to build a professional, fully functional, free online tools website using only my Android phone.
+
+STEP 1 — INSPECT THE PROJECT
+
+- Check all existing files and understand the current implementation.
+- Identify missing features, errors, broken buttons, and incomplete tools.
+- Preserve all working features and the existing white professional design.
+
+STEP 2 — FIX FUNCTIONALITY
+
+- Ensure all 10 tools work correctly: Word Counter, Age Calculator, Text Case Converter, Calculator, Countdown Timer, Password Generator, QR Code Generator, Text Reverser, Remove Extra Spaces, and Percentage Calculator.
+- Fix JavaScript errors and input validation.
+- Make search, navigation, copy buttons, and back-to-home controls work.
+- Never show fake results or placeholder functionality as complete.
+
+STEP 3 — MOBILE RESPONSIVENESS
+
+- Optimize the interface for Android phones.
+- Prevent horizontal scrolling and overlapping elements.
+- Ensure buttons and input fields are easy to tap.
+- Use readable text, proper spacing, and responsive tool cards.
+
+STEP 4 — PRIVACY AND SECURITY
+
+- Process user input locally wherever possible.
+- Do not send passwords or user-entered text to external servers.
+- Check that the password generator uses secure browser randomness where supported.
+- Make QR code generation work reliably and show a clear error if its library is unavailable.
+- Do not add login, payment systems, or unnecessary permissions.
+
+STEP 5 — TESTING
+
+- Test every tool with normal, empty, and invalid inputs.
+- Fix all errors you can identify.
+- Verify that all navigation links work.
+- Check that the homepage and tool interfaces work on small screens.
+
+STEP 6 — REPORT
+After making the necessary changes, tell me:
+
+1. Which files you changed.
+2. Which tools are fully working.
+3. Which issues remain unresolved.
+4. How I can test the website on my Android phone.
+5. How to publish the project for free using GitHub and Cloudflare Pages.
+
+IMPORTANT:
+Do not just give me advice or code snippets. Make the changes directly in my existing project whenever possible. Do not purchase anything or activate paid services. Ask me for a screenshot or error message if you need my help.
+
+Start by inspecting the existing project, then fix the most important issues first.

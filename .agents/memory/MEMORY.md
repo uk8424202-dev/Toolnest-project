@@ -1,0 +1,1 @@
+- [ToolNest constraints](toolnest-product-scope.md) — keep future changes Android-editable and free; avoid paid APIs, libraries, and services.
