@@ -69,7 +69,7 @@ function homePage() {
       <span class="eyebrow"><span class="eyebrow-dot"></span> YOUR FRIENDLY EVERYDAY TOOLBOX</span>
       <h1>Your Daily Tools,<br><span>All in One Place</span></h1>
       <p class="hero-copy">Free, simple, and useful online tools for your everyday needs.</p>
-      <div class="search-box" role="search">${icons.search}<input type="search" id="tool-search" placeholder="What can we help you with?" autocomplete="off" aria-label="Search tools by name or description"><button class="button-primary" data-page="tools">Explore Tools <span aria-hidden="true">→</span></button></div>
+      <div class="search-box" role="search">${icons.search}<input type="search" id="tool-search" placeholder="Find a tool" autocomplete="off" aria-label="Search tools by name or description"><button class="button-primary" data-page="tools">Explore Tools <span aria-hidden="true">→</span></button></div>
       <div class="hero-meta"><strong>10 handy tools</strong> <span aria-hidden="true">·</span> No account needed <span aria-hidden="true">·</span> Works in your browser</div>
     </section>
     <section class="section" id="tools"><div class="container">
@@ -117,7 +117,7 @@ function toolWorkspace(id) {
   if (!tool) return `<main class="tool-page"><div class="tool-shell"><button class="back-button" data-page="tools">← Back to all tools</button><div class="workspace">That tool could not be found. <button class="text-link" data-page="tools">Return to tools</button></div></div></main>`;
   let content = '';
   if (id === 'counter') content = `<div class="field"><label for="counter-text">Your text</label><textarea id="counter-text" placeholder="Paste or type your text here…" aria-describedby="counter-hint"></textarea><p class="helper" id="counter-hint">Counts update as you type. Your text stays in this browser.</p></div><div class="stats-grid" id="counter-stats"><div class="stat"><strong>0</strong><span>Words</span></div><div class="stat"><strong>0</strong><span>Characters</span></div><div class="stat"><strong>0</strong><span>Sentences</span></div><div class="stat"><strong>0</strong><span>Paragraphs</span></div></div>`;
-  if (id === 'age') content = `<div class="field"><label for="birth-date">Date of birth</label><input type="date" id="birth-date" max="${new Date().toISOString().slice(0,10)}"></div><div class="action-row"><button class="button-primary" data-action="calculate-age">Calculate age</button></div><div class="result-box hidden" id="age-result"><div class="result-label">Your age</div><div class="result-value large"></div></div><p class="message" id="age-message" aria-live="polite"></p>`;
+  if (id === 'age') content = `<div class="field"><label for="birth-date">Date of birth</label><input type="date" id="birth-date" max="${localDateInputValue()}"></div><div class="action-row"><button class="button-primary" data-action="calculate-age">Calculate age</button></div><div class="result-box hidden" id="age-result"><div class="result-label">Your age</div><div class="result-value large"></div></div><p class="message" id="age-message" aria-live="polite"></p>`;
   if (id === 'case') content = `<div class="field"><label for="case-input">Text to convert</label><textarea id="case-input" placeholder="Write something to convert…"></textarea></div><div class="action-row"><button class="button-secondary" data-case="upper">UPPERCASE</button><button class="button-secondary" data-case="lower">lowercase</button><button class="button-secondary" data-case="title">Title Case</button><button class="button-secondary" data-case="sentence">Sentence case</button></div><div class="field"><label for="case-output">Converted text</label><textarea id="case-output" readonly placeholder="Your converted text will appear here"></textarea></div><div class="action-row"><button class="button-secondary" data-copy="case-output">Copy result</button></div><p class="message" id="case-message" aria-live="polite"></p>`;
   if (id === 'calculator') content = `<div class="field"><label for="calc-expression">Expression</label><input id="calc-expression" inputmode="decimal" placeholder="For example: (18 + 6) / 3" aria-describedby="calc-help"><p class="helper" id="calc-help">Use +, −, ×, ÷, parentheses, and decimals.</p></div><div class="action-row"><button class="button-primary" data-action="calculate">Calculate</button><button class="button-secondary" data-action="clear-calc">Clear</button></div><div class="result-box hidden" id="calc-result"><div class="result-label">Answer</div><div class="result-value large"></div></div><p class="message" id="calc-message" aria-live="polite"></p>`;
   if (id === 'timer') content = `<div class="timer-inputs"><div class="workspace-grid"><div class="field"><label for="timer-minutes">Minutes</label><input id="timer-minutes" type="number" min="0" max="999" value="5" inputmode="numeric"></div><div class="field"><label for="timer-seconds">Seconds</label><input id="timer-seconds" type="number" min="0" max="59" value="0" inputmode="numeric"></div></div></div><div class="timer-display" id="timer-display" aria-live="polite">05:00</div><div class="action-row" style="justify-content:center"><button class="button-primary" data-action="timer-start">Start timer</button><button class="button-secondary" data-action="timer-pause">Pause</button><button class="button-secondary" data-action="timer-reset">Reset</button></div><p class="message" id="timer-message" aria-live="polite"></p>`;
@@ -190,6 +190,13 @@ function calculateAge(dateString) {
   }
   if (months < 0) { years -= 1; months += 12; }
   return `${years} years, ${months} months, ${days} days`;
+}
+
+function localDateInputValue(date = new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
 }
 
 function safeCalculate(expression) {
